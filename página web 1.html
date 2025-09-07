@@ -1,0 +1,376 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Service Ya -- Sanitarios, Herrería, Reformas, Pintura y Jardinería</title>
+  <meta name="description" content="Servicio integral para el hogar: sanitaria, herrería y soldaduras, reformas y revestimientos, pintura y jardinería. Presupuestos sin costo y atención rápida por WhatsApp." />
+  <meta name="theme-color" content="#0ea5e9" />
+  <style>
+    :root{
+      --bg:#0b1220;        /* fondo oscuro elegante */
+      --muted:#0f172a;     /* secciones */
+      --card:#0b1220;
+      --primary:#0ea5e9;   /* cian */
+      --primary-600:#0284c7;
+      --accent:#22d3ee;    /* cian claro */
+      --text:#e5e7eb;      /* texto claro */
+      --text-dim:#9ca3af;  /* texto secundario */
+      --ok:#22c55e;
+      --warn:#f59e0b;
+      --danger:#ef4444;
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.25);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:radial-gradient(1200px 600px at 20% -10%,rgba(34,211,238,.25),transparent),radial-gradient(800px 400px at 100% 10%,rgba(14,165,233,.25),transparent),var(--bg);color:var(--text);font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Noto Sans','Helvetica Neue',Arial,'Apple Color Emoji','Segoe UI Emoji',sans-serif;}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin-inline:auto;padding:24px}
+    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(8px);background:linear-gradient(to bottom, rgba(11,18,32,.9), rgba(11,18,32,.6));border-bottom:1px solid rgba(255,255,255,.06);z-index:50}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.3px}
+    .logo-mark{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--primary));display:grid;place-items:center;box-shadow:var(--shadow)}
+    .logo svg{width:22px;height:22px}
+    .nav-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));transition:.2s;cursor:pointer;}
+    .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.2)}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--primary));border:none;box-shadow:var(--shadow);color:#002a3a;font-weight:700}
+    .btn.whatsapp{background:#25D366;color:#071;
+      border:none;font-weight:700}
+    .btn.small{padding:10px 12px;border-radius:12px;font-size:14px}
+
+    /* Hero */
+    .hero{padding:56px 0 32px}
+    .hero-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+    .hero h1{font-size:clamp(28px,5vw,44px);line-height:1.05;margin:0 0 10px}
+    .hero p{color:var(--text-dim);margin:0 0 24px;font-size:clamp(15px,2.5vw,18px)}
+    .badges{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 0}
+    .badge{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid rgba(255,255,255,.1);border-radius:999px;background:rgba(255,255,255,.04);font-size:13px;color:#cbd5e1}
+    .hero-card{background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+
+    /* Servicios */
+    .section{padding:24px 0}
+    .section h2{font-size:clamp(22px,4vw,32px);margin:0 0 6px}
+    .section p.lead{color:var(--text-dim);margin:0 0 16px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:18px;transition:.2s}
+    .card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.18)}
+    .card h3{margin:10px 0 6px;font-size:20px}
+    .card p{margin:0;color:#cbd5e1;font-size:14.5px}
+    .card .actions{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
+    .pill{font-size:12px;color:#cbd5e1;border:1px dashed rgba(255,255,255,.18);padding:6px 10px;border-radius:999px;display:inline-block;margin:8px 6px 0 0}
+
+    /* Por qué elegirnos */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .feature{display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:14px;border-radius:14px}
+    .feature svg{flex:0 0 28px}
+
+    /* CTA banda */
+    .cta{margin:22px 0;background:linear-gradient(135deg,var(--primary),#3b82f6);border-radius:20px;padding:18px;border:1px solid rgba(255,255,255,.2);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+    .cta h3{margin:0;font-size:22px;color:#032336}
+
+    /* Footer */
+    footer{margin-top:26px;border-top:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01))}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:16px;padding:18px 0}
+    .muted{color:#9fb0bf}
+    .copy{border-top:1px dashed rgba(255,255,255,.12);padding:10px 0;color:#8aa0ac;font-size:13px}
+
+    /* Responsive */
+    @media (max-width: 960px){
+      .hero-wrap{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr 1fr}
+      .features{grid-template-columns:1fr 1fr}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 640px){
+      .grid{grid-template-columns:1fr}
+      .features{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+    }
+  </style>
+  <script>
+    // Utilidades para WhatsApp y teléfono
+    const PHONE_RAW = '59892327798';
+    const PHONE_DISPLAY = '+598 92 327 798';
+    function waLink(text='Hola, vengo de la web. Quiero pedir un presupuesto.'){
+      const url = `https://wa.me/${PHONE_RAW}?text=${encodeURIComponent(text)}`;
+      window.open(url,'_blank');
+    }
+    function callLink(){
+      window.location.href = `tel:${PHONE_DISPLAY.replace(/\s+/g,'')}`;
+    }
+  </script>
+  <!-- Datos estructurados -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Service Ya",
+    "description": "Servicios para el hogar: sanitaria, herrería y soldadura, reformas y revestimientos, pintura y jardinería.",
+    "areaServed": "Uruguay",
+    "telephone": "+59892327798",
+    "sameAs": [],
+    "url": "",
+    "makesOffer": [
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Sanitaria / Plomería"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Herrería y Soldaduras"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Reformas y Revestimientos"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Pintura"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Jardinería"}}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#inicio">
+        <span class="logo-mark" aria-hidden="true">
+          <!-- ícono llave inglesa -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14.7 6.3a4 4 0 1 0-5.66 5.66l8.49 8.49a2 2 0 0 0 2.83-2.83L11.87 9.16"/>
+            <circle cx="7" cy="7" r="1" />
+          </svg>
+        </span>
+        <span>Service Ya</span>
+      </a>
+      <nav class="nav-actions">
+        <a class="btn small" href="#servicios">Servicios</a>
+        <a class="btn small" href="#precios">Precios</a>
+        <a class="btn small" href="#contacto">Contacto</a>
+        <button class="btn whatsapp" onclick="waLink('Hola, quiero un presupuesto rápido. Servicio: ____________ . Dirección: ____________ .')">
+          <!-- ícono whatsapp -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M20.52 3.48A11.88 11.88 0 0012.06 0C5.47 0 .07 5.4.07 12c0 2.11.55 4.16 1.59 5.98L0 24l6.17-1.62a11.93 11.93 0 005.89 1.54h.01c6.59 0 12-5.4 12-12 0-3.2-1.25-6.2-3.54-8.44zM12.06 21.9h-.01a9.89 9.89 0 01-5.03-1.38l-.36-.21-3.66.96.98-3.57-.24-.37a9.9 9.9 0 01-1.53-5.35c0-5.47 4.46-9.93 9.94-9.93 2.65 0 5.14 1.03 7.01 2.9a9.86 9.86 0 012.91 7.04c0 5.47-4.47 9.91-9.98 9.91zm5.49-7.35c-.3-.15-1.79-.88-2.06-.98-.27-.1-.47-.15-.67.15-.2.3-.77.98-.94 1.18-.17.2-.35.23-.65.08-.3-.15-1.26-.46-2.4-1.47-.88-.77-1.48-1.72-1.65-2.02-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.38-.02-.53-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.58c-.2 0-.52.07-.8.38-.27.3-1.04 1.02-1.04 2.47s1.07 2.86 1.22 3.06c.15.2 2.11 3.22 5.1 4.52.71.31 1.26.5 1.69.64.71.23 1.36.2 1.87.12.57-.08 1.79-.73 2.04-1.44.25-.71.25-1.3.17-1.43-.08-.12-.27-.2-.57-.35z"/></svg>
+          WhatsApp</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inicio" class="hero">
+    <div class="container hero-wrap">
+      <div>
+        <div class="badge">Servicio integral para tu hogar</div>
+        <h1>Sanitaria, Herrería, Reformas, Pintura y Jardinería -- <span style="color:var(--accent)">rápido y confiable</span>.</h1>
+        <p>Resolvé todo con un solo equipo: arreglos de sanitaria, soldaduras y estructuras, reformas y revestimientos, pintura interior/exterior y mantenimiento de jardines. Presupuestos sin costo.</p>
+        <div class="nav-actions">
+          <button class="btn primary" onclick="waLink()">Pedir presupuesto</button>
+          <button class="btn" onclick="callLink()">Llamar: <strong>&nbsp;+598 92 327 798</strong></button>
+        </div>
+        <div class="badges">
+          <span class="badge">✔ Garantía por escrito</span>
+          <span class="badge">🕒 Atención rápida</span>
+          <span class="badge">💬 WhatsApp inmediato</span>
+        </div>
+      </div>
+      <div class="hero-card">
+        <!-- Ilustración simple SVG tipo collage de herramientas -->
+        <svg viewBox="0 0 500 320" width="100%" height="100%" aria-hidden="true">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0%" stop-color="#22d3ee"/>
+              <stop offset="100%" stop-color="#0ea5e9"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="500" height="320" rx="18" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.12)" />
+          <!-- llave -->
+          <g transform="translate(40,40)">
+            <circle cx="40" cy="40" r="36" fill="url(#g1)" opacity="0.9" />
+            <rect x="72" y="34" width="160" height="12" rx="6" fill="#93c5fd" />
+            <rect x="208" y="28" width="14" height="24" rx="6" fill="#60a5fa" />
+          </g>
+          <!-- soldadora -->
+          <g transform="translate(260,60)">
+            <rect x="0" y="0" width="160" height="100" rx="12" fill="#38bdf8" opacity=".8"/>
+            <circle cx="32" cy="32" r="12" fill="#0ea5e9"/>
+            <rect x="20" y="64" width="120" height="12" rx="6" fill="#bae6fd"/>
+            <line x1="80" y1="100" x2="120" y2="150" stroke="#7dd3fc" stroke-width="6" />
+            <circle cx="125" cy="156" r="10" fill="#e2e8f0"/>
+          </g>
+          <!-- brocha -->
+          <g transform="translate(60,170)">
+            <rect x="0" y="0" width="80" height="40" rx="8" fill="#60a5fa"/>
+            <rect x="30" y="40" width="20" height="60" rx="8" fill="#e2e8f0"/>
+            <rect x="24" y="95" width="32" height="16" rx="8" fill="#94a3b8"/>
+          </g>
+          <!-- hoja/jardín -->
+          <g transform="translate(200,210)">
+            <path d="M0,40 C40,-20 120,-20 160,40 C120,60 40,60 0,40 Z" fill="#34d399" opacity=".85" />
+            <circle cx="150" cy="15" r="8" fill="#86efac"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </main>
+
+  <section id="servicios" class="section">
+    <div class="container">
+      <h2>Nuestros servicios</h2>
+      <p class="lead">Elegí el rubro que necesitás. Vamos a domicilio y coordinamos por WhatsApp.</p>
+      <div class="grid">
+        <!-- Sanitaria -->
+        <article class="card">
+          <div class="pill">Sanitaria / Plomería</div>
+          <h3>Sanitaria</h3>
+          <p>Reparación de pérdidas, cambio de grifería, desobstrucciones, instalación de calefones, cañerías y sanitarios completos.</p>
+          <div class="actions">
+            <button class="btn small primary" onclick="waLink('Hola, necesito servicio de SANITARIA: ____________________')">Pedir presupuesto</button>
+            <a class="btn small" href="#precios">Ver precios</a>
+          </div>
+        </article>
+        <!-- Herrería y Soldaduras -->
+        <article class="card">
+          <div class="pill">Metal / Soldaduras</div>
+          <h3>Herrería y soldadura</h3>
+          <p>Soldaduras MIG/MAG/eléctrica, portones y rejas, refuerzos estructurales, barandas, reparaciones y fabricación a medida.</p>
+          <div class="actions">
+            <button class="btn small primary" onclick="waLink('Hola, necesito HERRERÍA Y SOLDADURA: ____________________')">Pedir presupuesto</button>
+            <a class="btn small" href="#precios">Ver precios</a>
+          </div>
+        </article>
+        <!-- Reformas y Revestimientos -->
+        <article class="card">
+          <div class="pill">Obra / Terminaciones</div>
+          <h3>Reformas y revestimientos</h3>
+          <p>Construcción en seco, tabiques, revestimientos cerámicos y porcelanato, revoques, alisados y reformas de cocina/baño.</p>
+          <div class="actions">
+            <button class="btn small primary" onclick="waLink('Hola, quiero REFORMAS Y REVESTIMIENTOS: ____________________')">Pedir presupuesto</button>
+            <a class="btn small" href="#precios">Ver precios</a>
+          </div>
+        </article>
+        <!-- Pintura -->
+        <article class="card">
+          <div class="pill">Interior / Exterior</div>
+          <h3>Pintura</h3>
+          <p>Aplicación interior y exterior, impermeabilizaciones, enduidos, reparaciones de humedad, pintura de rejas y estructuras.</p>
+          <div class="actions">
+            <button class="btn small primary" onclick="waLink('Hola, necesito PINTURA: ____________________')">Pedir presupuesto</button>
+            <a class="btn small" href="#precios">Ver precios</a>
+          </div>
+        </article>
+        <!-- Jardinería -->
+        <article class="card">
+          <div class="pill">Mantenimiento Verde</div>
+          <h3>Jardinería</h3>
+          <p>Cortes y poda, limpieza de terrenos, diseño y mantenimiento, colocación de césped y riego básico.</p>
+          <div class="actions">
+            <button class="btn small primary" onclick="waLink('Hola, necesito JARDINERÍA: ____________________')">Pedir presupuesto</button>
+            <a class="btn small" href="#precios">Ver precios</a>
+          </div>
+        </article>
+        <!-- Urgencias -->
+        <article class="card">
+          <div class="pill">Express</div>
+          <h3>Urgencias</h3>
+          <p>Atención prioritaria para pérdidas de agua, cerramientos dañados, filtraciones o riesgos de seguridad.</p>
+          <div class="actions">
+            <button class="btn small primary" onclick="waLink('Hola, tengo una URGENCIA: ____________________')">Escribir ahora</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>¿Por qué elegir Service Ya?</h2>
+      <p class="lead">Trabajo prolijo, a tiempo y con comunicación clara.</p>
+      <div class="features">
+        <div class="feature">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 100 20 10 10 0 000-20Zm-1 15l-5-5 1.41-1.41L11 13.17l6.59-6.59L19 8l-8 9z"/></svg>
+          <div>
+            <strong>Presupuesto sin costo</strong>
+            <div class="muted">Te cotizamos por WhatsApp con fotos o visita si es necesario.</div>
+          </div>
+        </div>
+        <div class="feature">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M3 13h2v-2H3v2zm4 0h14v-2H7v2zM3 17h2v-2H3v2zm0-8h2V7H3v2zm4 0h14V7H7v2z"/></svg>
+          <div>
+            <strong>Soluciones a medida</strong>
+            <div class="muted">Fabricación y terminaciones según tu necesidad y presupuesto.</div>
+          </div>
+        </div>
+        <div class="feature">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 11.99h7c-.53 4.14-3.28 7.93-7 9.22-3.72-1.29-6.47-5.08-7-9.22h7V6h2v6.99z"/></svg>
+          <div>
+            <strong>Garantía y seguridad</strong>
+            <div class="muted">Trabajo con garantía y medidas de seguridad en obra.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="precios" class="section">
+    <div class="container">
+      <h2>Precios orientativos</h2>
+      <p class="lead">Cada trabajo se cotiza según alcance y materiales. Estos valores sirven como guía.</p>
+      <div class="grid">
+        <article class="card"><h3>Visita técnica</h3><p>Desde <strong>$U 0</strong> a <strong>$U 1.200</strong> según zona y complejidad (se descuenta si hacés el trabajo).</p></article>
+        <article class="card"><h3>Sanitaria</h3><p>Hora técnica desde <strong>$U 1.000</strong>. Desobstrucciones y reparaciones a cotizar.</p></article>
+        <article class="card"><h3>Herrería</h3><p>Trabajos chicos desde <strong>$U 1.500</strong>. Portones/rejas a medida: presupuesto.</p></article>
+        <article class="card"><h3>Reformas</h3><p>Albañilería y revestimiento desde <strong>$U 1.200</strong> la hora o por metro.</p></article>
+        <article class="card"><h3>Pintura</h3><p>Interior/exterior por m². Solicitar visita para evaluar superficies.</p></article>
+        <article class="card"><h3>Jardinería</h3><p>Mantenimiento desde <strong>$U 800</strong> la hora. Limpiezas por jornada.</p></article>
+      </div>
+      <div class="cta">
+        <h3>Contanos qué necesitás y te pasamos número hoy.</h3>
+        <div class="nav-actions">
+          <button class="btn primary" onclick="waLink('Hola, paso detalles para cotizar: ____________________')">Cotizar por WhatsApp</button>
+          <button class="btn" onclick="callLink()">Llamar ahora</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="section">
+    <div class="container">
+      <h2>Contacto</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>WhatsApp</h3>
+          <p>Respuesta rápida con fotos y ubicación.</p>
+          <button class="btn whatsapp" onclick="waLink()">Escribir al +598 92 327 798</button>
+        </div>
+        <div class="card">
+          <h3>Llamadas</h3>
+          <p>Consultas y coordinación de visitas.</p>
+          <button class="btn" onclick="callLink()">Llamar ahora</button>
+        </div>
+        <div class="card">
+          <h3>Formulario (email)</h3>
+          <p>Si preferís email, abre tu correo con un mensaje listo.</p>
+          <a class="btn" href="mailto:contacto@serviceya.uy?subject=Consulta%20desde%20la%20web&body=Hola%2C%20quiero%20consultar%20sobre%3A%20_______%0AUbicaci%C3%B3n%3A%20_______%0AContacto%3A%20_______">Enviar email</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="logo" style="margin-bottom:6px">
+          <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 1 0-5.66 5.66l8.49 8.49a2 2 0 0 0 2.83-2.83L11.87 9.16"/><circle cx="7" cy="7" r="1" /></svg></span>
+          <strong>Service Ya</strong>
+        </div>
+        <div class="muted">Sanitaria • Herrería • Reformas • Pintura • Jardinería</div>
+      </div>
+      <div>
+        <div class="muted">Tel/WhatsApp</div>
+        <a class="btn small whatsapp" style="margin-top:8px" onclick="waLink()">+598 92 327 798</a>
+      </div>
+      <div>
+        <div class="muted">Navegación</div>
+        <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+          <a class="btn small" href="#servicios">Servicios</a>
+          <a class="btn small" href="#precios">Precios</a>
+          <a class="btn small" href="#contacto">Contacto</a>
+        </div>
+      </div>
+    </div>
+    <div class="container copy">© <span id="y"></span> Service Ya. Todos los derechos reservados.</div>
+  </footer>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
+
